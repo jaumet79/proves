@@ -1,0 +1,37 @@
+<!-- HTML ============================================================================== -->
+
+<!-- botó excel --------------------------------------------------------------------- -->
+
+<!-- Columnas que no deben salir en el excel -->
+<p:column exportable="false">     
+
+<f:facet name="footer">
+	<p:commandLink id="xls" ajax="false">
+		<p:graphicImage value="/resources/img/excelDescarga.png" />
+		<p:dataExporter type="xls" target="piaPendiente" fileName="SpapPendentValidarAmbConveni" />
+	</p:commandLink>
+</f:facet>	
+
+
+<!-- Include amb parametres --------------------------------------------------------------------- -->
+<ui:include src="/pages/gestion/cicloVida/cambios/solicitudCambioGeneric.xhtml" >
+	<ui:param name="solicitudTmpBean" value="#{solicitudCambioPiaBean}" />
+	<ui:param name="outcomeSeleccionar" value="solicitudCambioPia.jsf" />
+</ui:include>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:p="http://primefaces.org/ui" 
+	xmlns:pe="http://primefaces.org/ui/extensions" 
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	
+<!-- Paginacio --------------------------------------------------------------------- -->	
+paginator="true" 
+rows="25" 
+tableStyle="width:auto" 
+styleClass="paginated" 
+rendered="#{not empty listaValoracionesPendientesBean.listaValoracionesPendientes}"
+paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
